@@ -1,3 +1,2 @@
-<template>Home</template>
-
+<template></template>
 <script setup lang="ts"></script>
