@@ -13,11 +13,11 @@ liff
       console.log("登入");
       //login二次導向後 需要使用session url進行三次導向
       //若先前已經授權登入可以直接二次導向
-      let url;
+      let temp_url;
       if (sessionStorage.getItem("liffLoginRedirect")) {
-        url = sessionStorage.getItem("liffLoginRedirect");
+        temp_url = sessionStorage.getItem("liffLoginRedirect");
         sessionStorage.removeItem("liffLoginRedirect");
-        location.href = url;
+        location.href = temp_url;
       }
     } else {
       console.log("未登入");
