@@ -12,6 +12,12 @@ liff
     console.log("初始化成功");
     if (liff.isLoggedIn()) {
       console.log("登入");
+      let url;
+      if (sessionStorage.getItem("liffLoginRedirect")) {
+        url = sessionStorage.getItem("liffLoginRedirect");
+        sessionStorage.removeItem("liffLoginRedirect");
+        location.href = url;
+      }
     } else {
       console.log("未登入");
       sessionStorage.setItem("liffLoginRedirect", location.href);
