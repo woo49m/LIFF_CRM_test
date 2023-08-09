@@ -14,6 +14,8 @@ liff
       console.log("登入");
     } else {
       console.log("未登入");
+      sessionStorage.setItem("liffLoginRedirect", location.href);
+      console.log("session url: " + location.href);
       liff.login();
     }
   })
