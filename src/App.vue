@@ -14,6 +14,7 @@ liff
       console.log("登入");
     } else {
       console.log("未登入");
+      liff.login();
     }
   })
   .catch(() => {
