@@ -7,26 +7,19 @@ import StoreView from "../views/StoreView.vue";
 import MenuView from "../views/MenuView.vue";
 
 const routes: Array<RouteRecordRaw> = [
+  /*
   {
     path: "",
     name: "Home",
     component: HomeView,
-    meta: {
-      title: "登录",
-      keepAlive: false,
-      index: 1,
-    },
   },
+  */
   {
     path: "/store/:storeID",
     name: "store",
     props: true,
     component: StoreView,
-    meta: {
-      title: "前进",
-      keepAlive: true,
-      index: 2,
-    },
+
     children: [
       { path: "menu", component: MenuView },
       { path: "profile", component: ProfileView },
