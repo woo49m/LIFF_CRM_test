@@ -1,2 +1,2 @@
 <script setup lang="ts"></script>
-<template>Menu</template>
+<template>菜單</template>
