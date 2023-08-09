@@ -7,7 +7,7 @@ import StoreView from "../views/StoreView.vue";
 import MenuView from "../views/MenuView.vue";
 
 const routes: Array<RouteRecordRaw> = [
-  { path: "", name: "Home", component: MenuView },
+  { path: "", name: "Home", component: HomeView },
   {
     path: "/store/:storeID",
     name: "store",
