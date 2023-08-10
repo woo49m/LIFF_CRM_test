@@ -9,6 +9,10 @@ liff
   .init({ liffId: "2000346998-GNX6YwM7" })
   .then(() => {
     console.log("初始化成功");
+    const idToken = liff.getDecodedIDToken();
+    console.log("IDToken:");
+    console.log(idToken); // print decoded idToken object
+
     if (liff.isLoggedIn()) {
       console.log("登入");
       //login二次導向後 需要使用session url進行三次導向

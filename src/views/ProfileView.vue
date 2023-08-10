@@ -1,7 +1,7 @@
 <template>
   <div>會員資料 :</div>
   <div>會員姓名：{{ name }}</div>
-  <div style="width: 20px">
+  <div>
     <img :src="picture_src" />
   </div>
   <div>{{ profile }}</div>
