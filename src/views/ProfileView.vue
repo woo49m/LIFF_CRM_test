@@ -15,7 +15,7 @@ const name = ref<string>("");
 const profile = ref<any>();
 import { CognitoIdentityClient } from "@aws-sdk/client-cognito-identity";
 import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-identity";
-
+import AWS from "aws-sdk";
 let token = "";
 
 if (liff.isLoggedIn()) {
@@ -29,6 +29,13 @@ if (liff.isLoggedIn()) {
   const accessToken = liff.getAccessToken();
   console.log(idToken);
   console.log(accessToken);
+  AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+    IdentityPoolId: "ap-northeast-1:9541a3a1-fc2a-456e-a161-95fae001efd7",
+    Logins: {
+      "access.line.me": idToken,
+    },
+  });
+  console.log(AWS.config.credentials);
   console.log(
     fromCognitoIdentityPool({
       client: new CognitoIdentityClient({ region: "ap-northeast-1" }),
