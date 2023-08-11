@@ -13,7 +13,10 @@ import { ref } from "vue";
 const picture_src = ref<string>("");
 const name = ref<string>("");
 const profile = ref<any>();
-import { fromCognitoIdentityPool } from "@aws-sdk/credential-providers";
+import { CognitoIdentityClient } from "@aws-sdk/client-cognito-identity";
+import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-identity";
+
+let token = "";
 
 if (liff.isLoggedIn()) {
   liff.getProfile().then((pro) => {
@@ -23,17 +26,27 @@ if (liff.isLoggedIn()) {
   });
 
   const idToken = liff.getIDToken();
-  let COGNITO_ID = "COGNITO_ID"; // 'COGNITO_ID' has the format 'cognito-idp.REGION.amazonaws.com/COGNITO_USER_POOL_ID'
-  let loginData = {
-    [COGNITO_ID]: idToken,
-  };
-  const credentials = fromCognitoIdentityPool({
-    clientConfig: { region: REGION }, // Configure the underlying CognitoIdentityClient.
-    identityPoolId: "IDENTITY_POOL_ID",
-    logins: loginData,
-  });
-
-  console.log(credentials);
+  const accessToken = liff.getAccessToken();
+  console.log(idToken);
+  console.log(accessToken);
+  console.log(
+    fromCognitoIdentityPool({
+      client: new CognitoIdentityClient({ region: "ap-northeast-1" }),
+      identityPoolId: "ap-northeast-1:9541a3a1-fc2a-456e-a161-95fae001efd7",
+      logins: {
+        "access.line.me": idToken,
+      },
+    })
+  );
+  console.log(
+    fromCognitoIdentityPool({
+      client: new CognitoIdentityClient({ region: "ap-northeast-1" }),
+      identityPoolId: "ap-northeast-1:9541a3a1-fc2a-456e-a161-95fae001efd7",
+      logins: {
+        "access.line.me": accessToken,
+      },
+    })
+  );
 } else {
   console.log("未登入");
 }
