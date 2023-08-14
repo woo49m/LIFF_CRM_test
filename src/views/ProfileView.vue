@@ -32,7 +32,7 @@ if (liff.isLoggedIn()) {
       IdentityPoolId: "ap-northeast-1:9541a3a1-fc2a-456e-a161-95fae001efd7",
 
       Logins: {
-        "access.line.me": id,
+        "access.line.me": idToken,
       },
     },
     { region: "ap-northeast-1" }
