@@ -37,7 +37,8 @@ if (liff.isLoggedIn()) {
       IdentityPoolId: "ap-northeast-1:98d98a3e-e288-4c4e-a3b1-764772dfe76e",
 
       Logins: {
-        "access.line.me": idToken,
+        "cognito-idp.ap-northeast-1.amazonaws.com/uap-northeast-1_access.line.me":
+          idToken,
       },
     },
     { region: "ap-northeast-1" }
@@ -53,7 +54,8 @@ if (liff.isLoggedIn()) {
       client: new CognitoIdentityClient({ region: "ap-northeast-1" }),
       identityPoolId: "ap-northeast-1:98d98a3e-e288-4c4e-a3b1-764772dfe76e",
       logins: {
-        "https://access.line.me": idToken,
+        "cognito-idp.ap-northeast-1.amazonaws.com/uap-northeast-1_access.line.me":
+          idToken,
       },
     })
   );
