@@ -25,7 +25,10 @@ if (liff.isLoggedIn()) {
 
   const id = liff.getDecodedIDToken();
   const idToken = liff.getIDToken();
+  const accessToken = liff.getAccessToken();
+
   console.log(idToken);
+  console.log(accessToken);
   const AccessToken = liff.getAccessToken();
   AWS.config.region = "ap-northeast-1";
   AWS.config.credentials = new AWS.CognitoIdentityCredentials(
