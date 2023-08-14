@@ -38,9 +38,9 @@ if (liff.isLoggedIn()) {
     },
   });
 
-  AWS.config.getCredentials(() => {
-    console.log("Test Credential is get: ");
-    console.log(AWS.config);
+  AWS.config.getCredentials(function (err) {
+    if (err) console.log(err.stack); // credentials not loaded
+    else console.log("Access Key:", AWS.config.credentials.accessKeyId);
   });
 
   console.log(
