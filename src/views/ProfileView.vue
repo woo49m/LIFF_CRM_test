@@ -24,7 +24,6 @@ if (liff.isLoggedIn()) {
   });
 
   const idToken = liff.getIDToken();
-  const accessToken = liff.getAccessToken();
 
   AWS.config.region = "ap-northeast-1";
 
@@ -36,6 +35,10 @@ if (liff.isLoggedIn()) {
     },
   });
 
+  AWS.config.credentials.get(() => {
+    console.log("Get");
+    console.log(AWS.config.credentials);
+  });
   AWS.config.getCredentials(function (err) {
     if (err) console.log(err.stack); // credentials not loaded
     else console.log("Access Key:", AWS.config.credentials.accessKeyId);
