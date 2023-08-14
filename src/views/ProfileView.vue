@@ -26,12 +26,17 @@ if (liff.isLoggedIn()) {
   const idToken = liff.getIDToken();
   const AccessToken = liff.getAccessToken();
   AWS.config.region = "ap-northeast-1";
-  AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-    IdentityPoolId: "ap-northeast-1:9541a3a1-fc2a-456e-a161-95fae001efd7",
-    Logins: {
-      "https://access.line.me": idToken,
+  AWS.config.credentials = new AWS.CognitoIdentityCredentials(
+    {
+      IdentityPoolId: "ap-northeast-1:9541a3a1-fc2a-456e-a161-95fae001efd7",
+      /*
+      Logins: {
+        "access.line.me": idToken,
+      },
+      */
     },
-  });
+    { region: "ap-northeast-1" }
+  );
 
   AWS.config.credentials.get(function (err) {
     if (err) console.log(err.stack); // credentials not loaded
