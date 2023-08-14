@@ -34,7 +34,7 @@ if (liff.isLoggedIn()) {
   AWS.config.region = "ap-northeast-1";
   AWS.config.credentials = new AWS.CognitoIdentityCredentials(
     {
-      IdentityPoolId: "ap-northeast-1:9541a3a1-fc2a-456e-a161-95fae001efd7",
+      IdentityPoolId: "ap-northeast-1:98d98a3e-e288-4c4e-a3b1-764772dfe76e",
 
       Logins: {
         "access.line.me": idToken,
@@ -51,7 +51,7 @@ if (liff.isLoggedIn()) {
   console.log(
     fromCognitoIdentityPool({
       client: new CognitoIdentityClient({ region: "ap-northeast-1" }),
-      identityPoolId: "ap-northeast-1:9541a3a1-fc2a-456e-a161-95fae001efd7",
+      identityPoolId: "ap-northeast-1:98d98a3e-e288-4c4e-a3b1-764772dfe76e",
       logins: {
         "https://access.line.me": idToken,
       },
