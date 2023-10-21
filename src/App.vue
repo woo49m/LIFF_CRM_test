@@ -4,7 +4,7 @@
 import liff from "@line/liff";
 console.log("This is APP.vue");
 liff
-  .init({ liffId: "2000346998-GNX6YwM7" })
+  .init({ liffId: "2001260256-57krAajl" })
   .then(() => {
     if (liff.isLoggedIn()) {
       console.log("登入");
