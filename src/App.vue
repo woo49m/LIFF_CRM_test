@@ -4,19 +4,31 @@
 
 <script setup lang="ts">
 import liff from "@line/liff";
-
+console.log("This is APP.vue");
 liff
   .init({ liffId: "2000346998-GNX6YwM7" })
   .then(() => {
-    console.log("初始化成功");
-    const idToken = liff.getDecodedIDToken();
-    console.log("IDToken:");
-    console.log(idToken); // print decoded idToken object
-
     if (liff.isLoggedIn()) {
       console.log("登入");
       //login二次導向後 需要使用session url進行三次導向
       //若先前已經授權登入可以直接二次導向
+
+      /* send message and close */
+      liff
+        .sendMessages([
+          {
+            type: "text",
+            text: "周亞唐屁眼在癢，趕快幹他",
+          },
+        ])
+        .then(() => {
+          console.log("message sent");
+        })
+        .catch((err) => {
+          console.log("error", err);
+        });
+      liff.closeWindow();
+
       let temp_url;
       if (sessionStorage.getItem("liffLoginRedirect")) {
         temp_url = sessionStorage.getItem("liffLoginRedirect");
@@ -25,22 +37,14 @@ liff
       }
     } else {
       console.log("未登入");
-      //在login二次導向前 儲存預設導向URL
+      //在login二次導向前 儲存URL
       sessionStorage.setItem("liffLoginRedirect", location.href);
-      console.log("session url: " + location.href);
+      console.log("store session url: " + location.href);
       liff.login();
     }
   })
-  .catch(() => {
-    console.log("初始化失敗");
+  .catch((err) => {
+    console.log("初始化失敗:" + err);
   });
 </script>
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-</style>
+<style></style>
