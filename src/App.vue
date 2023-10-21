@@ -1,6 +1,4 @@
-<template>
-  <router-view />
-</template>
+<template>{{}}</template>
 
 <script setup lang="ts">
 import liff from "@line/liff";
@@ -30,10 +28,6 @@ liff
       liff.closeWindow();
     } else {
       console.log("未登入");
-      //在login二次導向前 儲存URL
-      sessionStorage.setItem("liffLoginRedirect", location.href);
-      console.log("store session url: " + location.href);
-      liff.login();
     }
   })
   .catch((err) => {
