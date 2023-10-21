@@ -18,7 +18,7 @@ liff
         .sendMessages([
           {
             type: "text",
-            text: "周亞唐屁眼在癢，趕快幹他",
+            text: "我想跟你打砲",
           },
         ])
         .then(() => {
@@ -28,13 +28,6 @@ liff
           console.log("error", err);
         });
       liff.closeWindow();
-
-      let temp_url;
-      if (sessionStorage.getItem("liffLoginRedirect")) {
-        temp_url = sessionStorage.getItem("liffLoginRedirect");
-        sessionStorage.removeItem("liffLoginRedirect");
-        location.href = temp_url;
-      }
     } else {
       console.log("未登入");
       //在login二次導向前 儲存URL
